@@ -355,6 +355,34 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,t
 .pcard .pavatar{width:56px;height:56px;flex:0 0 auto;border-radius:50%;object-fit:cover;object-position:top center;border:2px solid var(--gold);box-shadow:0 6px 14px rgba(82,12,11,.16)}
 .pcard .ptxt{min-width:0;flex:1}
 </style>
+<style>
+/* ===== v4.9 — grouped dropdown nav + merged Get Involved / Membership (2026-11-20) ===== */
+nav.main{align-items:center;gap:14px}
+.nav-dd{position:relative}
+.nav-toprow{display:inline-flex;align-items:center;gap:2px}
+nav.main a.nav-top{padding:6px 2px}
+.nav-caret{background:none;border:0;cursor:pointer;color:var(--maroon);font-size:13px;line-height:1;padding:8px 5px;font-family:"Noto Sans",sans-serif}
+.nav-caret:hover{color:#8F6514}
+.nav-menu{display:none;position:absolute;top:100%;inset-inline-start:0;min-width:248px;background:linear-gradient(135deg,rgba(255,252,244,.97),rgba(251,246,236,.95));-webkit-backdrop-filter:blur(16px) saturate(1.4);backdrop-filter:blur(16px) saturate(1.4);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 38px rgba(82,12,11,.16);padding:12px 8px 8px;z-index:90}
+.nav-dd.flip .nav-menu{inset-inline-start:auto;inset-inline-end:0}
+.nav-menu a{display:block;padding:6px 14px;border-bottom:0;border-radius:9px;font-size:15px;line-height:1.95;white-space:nowrap}
+html[lang=en] .nav-menu a{line-height:1.5;padding:8px 14px}
+.nav-menu a:hover{background:rgba(231,190,102,.20);color:var(--maroon)}
+@media(min-width:961px){
+ .nav-dd:hover .nav-menu,.nav-dd:focus-within .nav-menu,.nav-dd.open .nav-menu{display:block}
+}
+.memberpart{scroll-margin-top:96px}
+@media(max-width:960px){
+ nav.main{gap:2px;align-items:stretch}
+ .nav-dd{width:100%}
+ .nav-toprow{display:flex;width:100%}
+ .nav-toprow .nav-top{flex:1}
+ .nav-caret{font-size:16px;padding:8px 14px}
+ .nav-menu{position:static;min-width:0;box-shadow:none;border:0;border-radius:10px;background:rgba(255,255,255,.45);-webkit-backdrop-filter:none;backdrop-filter:none;padding:4px 6px 8px;padding-inline-start:16px;margin-bottom:4px}
+ .nav-dd.open .nav-menu{display:block}
+ nav.main>a{padding:8px 2px}
+}
+</style>
 </head>
 <body>
 <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div><div class="blob b5"></div>
@@ -368,18 +396,49 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,t
    <span class="bt"><b data-ur="انجمن دخترانِ کشمیر" data-en="Anjuman Dukhtaran-e-Kashmir">انجمن دخترانِ کشمیر</b><span>ANJUMAN DUKHTARAN-E-KASHMIR · ADK</span></span>
   </a>
   <nav class="main" id="mainnav">
-   <a href="#about" data-ur="ہمارا تعارف" data-en="About">ہمارا تعارف</a>
-   <a href="#programs" data-ur="پروگرامز" data-en="Programs">پروگرامز</a>
-   <a href="#booking" data-ur="بکنگ" data-en="Booking">بکنگ</a>
+   <div class="nav-dd">
+    <span class="nav-toprow"><a class="nav-top" href="#about"><span data-ur="ہمارا تعارف" data-en="About">ہمارا تعارف</span></a><button type="button" class="nav-caret" aria-expanded="false" aria-label="ذیلی مینو — ہمارا تعارف / Submenu — About">▾</button></span>
+    <div class="nav-menu">
+     <a href="#about" data-ur="تعارف" data-en="About">تعارف</a>
+     <a href="#story" data-ur="ہماری کہانی" data-en="Our Story">ہماری کہانی</a>
+     <a href="#transparency" data-ur="شفافیت" data-en="Transparency">شفافیت</a>
+    </div>
+   </div>
+   <div class="nav-dd">
+    <span class="nav-toprow"><a class="nav-top" href="#programs"><span data-ur="پروگرامز" data-en="Programs">پروگرامز</span></a><button type="button" class="nav-caret" aria-expanded="false" aria-label="ذیلی مینو — پروگرامز / Submenu — Programs">▾</button></span>
+    <div class="nav-menu">
+     <a href="#p-welfare" data-ur="خواتین کی فلاح و بہبود" data-en="Women's Welfare &amp; Wellbeing">خواتین کی فلاح و بہبود</a>
+     <a href="#p-education" data-ur="تعلیمی مدد" data-en="Education Support">تعلیمی مدد</a>
+     <a href="#p-marriage" data-ur="بچیوں کی شادیوں میں معاونت" data-en="Marriage Support for Daughters">بچیوں کی شادیوں میں معاونت</a>
+     <a href="#p-economic" data-ur="خواتین کی معاشی ترقی" data-en="Women's Economic Development">خواتین کی معاشی ترقی</a>
+     <a href="#p-legal" data-ur="قانونی امداد" data-en="Legal Aid">قانونی امداد</a>
+     <a href="#p-mental" data-ur="ذہنی صحت — رہنمائی و مدد" data-en="Mental Health — Guidance &amp; Support">ذہنی صحت — رہنمائی و مدد</a>
+     <a href="#p-training" data-ur="سیشنز، کونسلنگ، کوچنگ و ٹریننگز" data-en="Sessions, Counselling, Coaching &amp; Trainings">سیشنز، کونسلنگ، کوچنگ و ٹریننگز</a>
+    </div>
+   </div>
    <a href="#leadership" data-ur="قیادت" data-en="Leadership">قیادت</a>
-   <a href="#impact" data-ur="ہمارا اثر" data-en="Impact">ہمارا اثر</a>
-   <a href="#gallery" data-ur="گیلری" data-en="Gallery">گیلری</a>
-   <a href="#involve" data-ur="شامل ہوں" data-en="Get Involved">شامل ہوں</a>
-   <a href="#membership" data-ur="رکنیت کی دعوت" data-en="Join ADK">رکنیت کی دعوت</a>
-   <a href="#story" data-ur="ہماری کہانی" data-en="Our Story">ہماری کہانی</a>
-   <a href="#transparency" data-ur="شفافیت" data-en="Transparency">شفافیت</a>
-   <a href="#news" data-ur="خبریں" data-en="News">خبریں</a>
-   <a href="#resources" data-ur="وسائل" data-en="Resources">وسائل</a>
+   <div class="nav-dd">
+    <span class="nav-toprow"><a class="nav-top" href="#impact"><span data-ur="ہمارا اثر" data-en="Impact">ہمارا اثر</span></a><button type="button" class="nav-caret" aria-expanded="false" aria-label="ذیلی مینو — ہمارا اثر / Submenu — Impact">▾</button></span>
+    <div class="nav-menu">
+     <a href="#impact" data-ur="ہمارا اثر" data-en="Impact">ہمارا اثر</a>
+     <a href="#gallery" data-ur="گیلری" data-en="Gallery">گیلری</a>
+    </div>
+   </div>
+   <div class="nav-dd flip">
+    <span class="nav-toprow"><a class="nav-top" href="#involve"><span data-ur="شامل ہوں" data-en="Get Involved">شامل ہوں</span></a><button type="button" class="nav-caret" aria-expanded="false" aria-label="ذیلی مینو — شامل ہوں / Submenu — Get Involved">▾</button></span>
+    <div class="nav-menu">
+     <a href="#involve" data-ur="شامل ہوں" data-en="Get Involved">شامل ہوں</a>
+     <a href="#membership" data-ur="رکنیت کی دعوت" data-en="Join ADK">رکنیت کی دعوت</a>
+    </div>
+   </div>
+   <div class="nav-dd flip">
+    <span class="nav-toprow"><a class="nav-top" href="#resources"><span data-ur="وسائل" data-en="Resources">وسائل</span></a><button type="button" class="nav-caret" aria-expanded="false" aria-label="ذیلی مینو — وسائل / Submenu — Resources">▾</button></span>
+    <div class="nav-menu">
+     <a href="#resources" data-ur="منتخب کتب" data-en="Selected Books">منتخب کتب</a>
+     <a href="#news" data-ur="خبریں" data-en="News">خبریں</a>
+    </div>
+   </div>
+   <a href="#booking" data-ur="بکنگ" data-en="Booking">بکنگ</a>
    <a href="#contact" data-ur="رابطہ" data-en="Contact">رابطہ</a>
   </nav>
   <div class="hact">
@@ -658,13 +717,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,t
     </div>
    </div>
   </div>
- </div>
-</section>
-
-<!-- MEMBERSHIP -->
-<section id="membership">
- <div class="wrap">
-  <div class="sec-head reveal">
+  <!-- MEMBERSHIP — merged into Get Involved (v4.9): one section, one menu item -->
+  <div id="membership" class="memberpart">
+  <div class="sec-head reveal" style="margin-top:76px">
    <div class="k" data-ur="صدر کی طرف سے دعوت" data-en="An Invitation from the President">صدر کی طرف سے دعوت</div>
    <h2 data-ur="رکنیت کی دعوت" data-en="Join ADK — Membership Invitation">رکنیت کی دعوت</h2>
    <p data-ur="صدر کی طرف سے رکنیت کی دعوت" data-en="A membership invitation from the President of ADK">صدر کی طرف سے رکنیت کی دعوت</p>
@@ -693,6 +748,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,t
   <p class="seatnote reveal" data-ur="رکنیت کی یہ تقریباً 20 نشستیں اوپر «قیادت و ٹیم» میں دکھائی گئی 20 رکنی جگہوں کے مطابق ہیں — جیسے جیسے اراکین شامل ہوں گے، ان کی تفصیل انہی جگہوں میں آ جائے گی۔" data-en="These approximately 20 membership seats match the 20 member slots shown in Leadership &amp; Team above — as members join, their details will appear in those slots.">رکنیت کی یہ تقریباً 20 نشستیں اوپر «قیادت و ٹیم» میں دکھائی گئی 20 رکنی جگہوں کے مطابق ہیں — جیسے جیسے اراکین شامل ہوں گے، ان کی تفصیل انہی جگہوں میں آ جائے گی۔</p>
   <div class="membercta reveal">
    <a class="btn btn-green" href="https://wa.me/923005180522?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%DB%8C%DA%A9%D9%85%21%20%D9%85%DB%8C%DA%BA%20%D8%A7%D9%86%D8%AC%D9%85%D9%86%20%D8%AF%D8%AE%D8%AA%D8%B1%D8%A7%D9%86%D9%90%20%DA%A9%D8%B4%D9%85%DB%8C%D8%B1%20%28ADK%29%20%DA%A9%D8%A7%20%D8%B1%DA%A9%D9%86%20%D8%A8%D9%86%D9%86%D8%A7%20%DA%86%D8%A7%DB%81%D8%AA%D8%A7%20%DB%81%D9%88%DA%BA%20%E2%80%94%20%D8%B5%D8%AF%D8%B1%20%D8%B5%D8%A7%D8%AD%D8%A8%DB%81%20%DA%A9%DB%8C%20%D8%AF%D8%B9%D9%88%D8%AA%20%D9%BE%D8%B1%20%D8%B1%DA%A9%D9%86%DB%8C%D8%AA%20%DA%A9%DB%92%20%D9%84%DB%8C%DB%92%20%D8%AF%D8%B1%D8%AE%D9%88%D8%A7%D8%B3%D8%AA%20%D8%AF%DB%8C%D9%86%D8%A7%20%DA%86%D8%A7%DB%81%D8%AA%D8%A7%20%DB%81%D9%88%DA%BA%DB%94%20%D8%A8%D8%B1%D8%A7%DB%81%20%DA%A9%D8%B1%D9%85%20%D8%B4%D9%85%D9%88%D9%84%DB%8C%D8%AA%20%DA%A9%D8%A7%20%D8%B7%D8%B1%DB%8C%D9%82%DB%81%20%D8%A8%D8%AA%D8%A7%20%D8%AF%DB%8C%DA%BA%DB%94" target="_blank" rel="noopener" data-ur="رکن بنیں" data-en="Become a Member">رکن بنیں</a>
+  </div>
   </div>
  </div>
 </section>
@@ -1329,6 +1385,7 @@ function route(){
  }
  var nav=document.getElementById('mainnav'); if(nav) nav.classList.remove('open');
  var bg=document.getElementById('burger'); if(bg) bg.setAttribute('aria-expanded','false');
+ if(window.__closeNavDropdowns) window.__closeNavDropdowns(null);
 }
 document.addEventListener('click',function(e){
  var t=e.target;
@@ -1486,6 +1543,37 @@ route();
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(lastText).then(done,done);}
   else{var ta=document.createElement('textarea');ta.value=lastText;document.body.appendChild(ta);ta.select();try{document.execCommand('copy')}catch(e){}document.body.removeChild(ta);done();}
  });}
+})();
+</script>
+
+<script>
+/* ===== v4.9 — nav dropdowns: tap/click toggle (hover handled in CSS) ===== */
+(function(){
+ var dds=document.querySelectorAll('.nav-dd');
+ function closeAll(except){
+  dds.forEach(function(d){
+   if(d!==except){d.classList.remove('open');var c=d.querySelector('.nav-caret');if(c)c.setAttribute('aria-expanded','false');}
+  });
+ }
+ window.__closeNavDropdowns=closeAll;
+ dds.forEach(function(d){
+  var caret=d.querySelector('.nav-caret');
+  if(caret){caret.addEventListener('click',function(e){
+   e.preventDefault();e.stopPropagation();
+   var willOpen=!d.classList.contains('open');
+   closeAll(d);
+   d.classList.toggle('open',willOpen);
+   caret.setAttribute('aria-expanded',willOpen?'true':'false');
+  });}
+ });
+ var nav=document.getElementById('mainnav');
+ if(nav){nav.querySelectorAll('a').forEach(function(a){
+  a.addEventListener('click',function(){closeAll(null);});
+ });}
+ document.addEventListener('click',function(e){
+  if(!e.target.closest||!e.target.closest('.nav-dd')){closeAll(null);}
+ });
+ document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeAll(null);}});
 })();
 </script>
 </body>
