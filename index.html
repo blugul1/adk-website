@@ -1924,5 +1924,37 @@ route();
  if(lb)lb.addEventListener('click',sync);
 })();
 </script>
+<style>
+/* ===== PINK LIVE (2026-11-25): approved pink preview applied to the live site, rose ground on every view ===== */
+/* liquid rose ground: stronger rose wash, gold wash, rose-maroon wash over a rose-cream gradient */
+body{background:
+ radial-gradient(880px 560px at 88% -4%,rgba(216,181,178,.55),rgba(216,181,178,0) 62%),
+ radial-gradient(820px 620px at -8% 104%,rgba(231,190,102,.28),rgba(231,190,102,0) 62%),
+ radial-gradient(760px 560px at 52% 58%,rgba(156,74,84,.10),rgba(156,74,84,0) 65%),
+ linear-gradient(180deg,#FBEDEC,#F9E6E4 50%,#FBF6EC)!important}
+/* header: rose-cream, matching the ground */
+header{background:rgba(247,227,225,.97)!important}
+/* home section tints */
+#about{background:rgba(216,181,178,.18)!important}
+#leadership{background:rgba(216,181,178,.30)!important}
+#programs{background:rgba(247,227,225,.55)!important}
+#impact{background:rgba(216,181,178,.30)!important}
+#gallery{background:rgba(216,181,178,.18)!important}
+#involve{background:rgba(156,74,84,.14)!important}
+#faq{background:rgba(216,181,178,.22)!important}
+#contact{background:rgba(216,181,178,.18)!important}
+/* every inner view (all 7 program pages, story, transparency, news, resources, booking) shares the .pbody wrapper: same rose ground, no view left on plain cream */
+.pbody{background:rgba(247,227,225,.55)!important}
+/* cards: warm rose-white glass with a rose border; frosted blur and floating animations unchanged */
+.prog,.lcard,.step,.stat,.val,.docbox,.inc,.node,.bookref,.who,.gcard,
+.pbody .inc,.pbody .node,.pbody .docbox,.pbody .val,.pbody .lcard,.pbody .bookref,.pbody .who{
+ background:rgba(255,246,245,.66)!important;border-color:rgba(216,181,178,.60)!important}
+/* kickers in deep rose */
+.k{color:#8F4A52!important}
+/* program and story page headers: deep maroon into rose-maroon */
+.phero{background:linear-gradient(135deg,#520C0B,#7A2230 55%,#9C4A54)}
+/* footer: rose rule along the top */
+footer{border-top:5px solid #D8B5B2}
+</style>
 </body>
 </html>
