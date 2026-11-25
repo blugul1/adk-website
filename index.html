@@ -161,7 +161,7 @@ header{z-index:60!important;background:linear-gradient(120deg,rgba(255,252,244,.
  background:linear-gradient(135deg,rgba(255,255,255,.68),rgba(255,255,255,.28))!important;
  -webkit-backdrop-filter:blur(16px) saturate(1.35);backdrop-filter:blur(16px) saturate(1.35);
  border:1px solid rgba(255,255,255,.75)!important;
- box-shadow:0 18px 38px rgba(82,12,11,.10),inset 0 1px 0 rgba(255,255,255,.85)!important}
+ box-shadow:0 18px 38px rgba(82,12,11,.10),inset 0 1px 0 rgba(255,255,255,.85)}
 .stats{background:linear-gradient(120deg,rgba(82,12,11,.88),rgba(130,25,22,.82))!important;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
 .btn{box-shadow:0 10px 24px rgba(82,12,11,.16),inset 0 1px 0 rgba(255,255,255,.35)!important}
 footer{background:linear-gradient(180deg,rgba(74,10,9,.96),rgba(46,6,5,.98))!important}
@@ -177,6 +177,9 @@ nav.main a{white-space:nowrap}
 .b5{width:240px;height:240px;background:rgba(130,25,22,.12);top:72%;inset-inline-start:34%;animation:drift 44s ease-in-out infinite alternate}
 #loader{position:fixed;inset:0;z-index:200;background:var(--cream);display:flex;flex-direction:column;gap:16px;align-items:center;justify-content:center;transition:opacity .55s ease}
 #loader.hide{opacity:0;pointer-events:none}
+/* safety net: the splash can never stay past ~4s even if the hide script is delayed */
+#loader{animation:loaderSafety .6s ease 4s forwards}
+@keyframes loaderSafety{to{opacity:0;visibility:hidden}}
 #loader img{width:88px;height:88px;border-radius:50%;box-shadow:0 16px 34px rgba(82,12,11,.18);animation:lpulse 1.7s ease-in-out infinite}
 #loader span{color:var(--maroon);font-weight:700;font-size:16px}
 @keyframes lpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
@@ -428,8 +431,8 @@ header .wrap{max-width:1480px}
 /* impact steps: opaque white cards, glass blur removed */
 .step{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
 /* program and sub-page template: inner cards opaque cream or white, light border */
-.pbody .inc,.pbody .node,.pbody .docbox,.pbody .val,.pbody .lcard,.pbody .bookref{background:#fff!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;border:1px solid var(--line)!important;box-shadow:0 8px 22px rgba(82,12,11,.06)!important}
-.pbody .who{background:var(--cream)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;border:1.5px dashed var(--gold)!important;box-shadow:none!important}
+.pbody .inc,.pbody .node,.pbody .docbox,.pbody .val,.pbody .lcard,.pbody .bookref{background:#fff!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;border:1px solid var(--line)!important;box-shadow:0 8px 22px rgba(82,12,11,.06)}
+.pbody .who{background:var(--cream)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;border:1.5px dashed var(--gold)!important;box-shadow:none}
 /* program pages: the second CTA (Request Support) becomes an outline button */
 .pbody .pcta .btn-maroon{background:var(--cream);border-color:var(--maroon);color:var(--maroon)}
 .pbody .pcta .btn-maroon:hover{background:rgba(130,25,22,.08)}
@@ -463,7 +466,7 @@ header{background:rgba(251,246,236,.97)!important;-webkit-backdrop-filter:blur(1
  background:rgba(255,255,255,.58)!important;
  -webkit-backdrop-filter:blur(16px)!important;backdrop-filter:blur(16px)!important;
  border:1px solid rgba(255,255,255,.75)!important;border-radius:18px;
- box-shadow:0 20px 44px rgba(82,12,11,.16),0 4px 14px rgba(82,12,11,.08)!important}
+ box-shadow:0 20px 44px rgba(82,12,11,.16),0 4px 14px rgba(82,12,11,.08)}
 /* membership invitation card: soft rose tint */
 .lcard.invite{background:rgba(216,181,178,.35)!important}
 /* light section bands go transparent so the liquid background shows through */
@@ -491,11 +494,11 @@ header{background:rgba(251,246,236,.97)!important;-webkit-backdrop-filter:blur(1
  filter:drop-shadow(0 30px 44px rgba(0,0,0,.5)) drop-shadow(0 8px 14px rgba(0,0,0,.35));
  transition:filter .5s ease}
 .hero .sealbox::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:calc(min(360px,80%) + 22px);aspect-ratio:1/1;border-radius:50%;pointer-events:none;
- background:linear-gradient(100deg,rgba(255,255,255,0) 42%,rgba(255,255,255,.45) 50%,rgba(255,255,255,0) 58%);background-size:250% 100%;background-repeat:no-repeat;background-position:100% 0;
- animation:medalShine 7s ease-in-out infinite}
+ background:linear-gradient(100deg,rgba(255,255,255,0) 42%,rgba(255,255,255,.55) 50%,rgba(255,255,255,0) 58%);background-size:250% 100%;background-repeat:no-repeat;background-position:100% 0;
+ animation:medalShine 6s ease-in-out infinite}
 .hero .sealbox::after{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:calc(min(360px,80%) + 22px);aspect-ratio:1/1;border-radius:50%;pointer-events:none;
  box-shadow:inset 0 12px 26px rgba(255,255,255,.30),inset 0 -20px 36px rgba(43,24,0,.38),inset 0 2px 6px rgba(255,255,255,.35),inset 0 0 0 1px rgba(255,255,255,.15)}
-@keyframes medalShine{0%{background-position:100% 0}20%{background-position:0% 0}100%{background-position:0% 0}}
+@keyframes medalShine{0%{background-position:100% 0}25%{background-position:0% 0}100%{background-position:0% 0}}
 @keyframes medalShineFast{from{background-position:100% 0}to{background-position:0% 0}}
 .hero .sealbox:hover,.hero .sealbox:active{transform:perspective(900px) rotateX(4deg) rotateY(-5deg) translateY(-3px) scale(1.03)}
 .hero .sealbox:hover img,.hero .sealbox:active img{filter:drop-shadow(0 42px 56px rgba(0,0,0,.55)) drop-shadow(0 12px 18px rgba(0,0,0,.4))}
@@ -505,7 +508,7 @@ header .brand img,footer .fb-brand img{box-sizing:border-box;background:conic-gr
 header .brand img{padding:3px;box-shadow:0 3px 8px rgba(82,12,11,.35)}
 footer .fb-brand img{padding:4px;box-shadow:0 4px 10px rgba(0,0,0,.4)}
 /* hero text panel: barely there, gentle slow float, the text carries its own shadow */
-.hero>.wrap>div:first-child{background:rgba(82,12,11,.14);border:1px solid rgba(255,255,255,.28);box-shadow:0 14px 34px rgba(82,12,11,.12);animation:heroFloat 7s ease-in-out infinite alternate}
+.hero>.wrap>div:first-child{background:rgba(82,12,11,.10);-webkit-backdrop-filter:none;backdrop-filter:none;border:1px solid rgba(255,255,255,.18);box-shadow:0 14px 34px rgba(82,12,11,.12);animation:heroFloat 7s ease-in-out infinite alternate}
 @keyframes heroFloat{from{transform:translateY(0)}to{transform:translateY(-4px)}}
 .hero>.wrap>div:first-child h1,.hero>.wrap>div:first-child .eyebrow,.hero>.wrap>div:first-child p.sub{text-shadow:0 2px 14px rgba(0,0,0,.55),0 1px 4px rgba(0,0,0,.45)}
 /* hope card (mother and daughter): gentle float, breathing gold glow, very slow zoom */
@@ -518,6 +521,45 @@ footer .fb-brand img{padding:4px;box-shadow:0 4px 10px rgba(0,0,0,.4)}
  .hero .sealbox,.hero .sealbox img{transition:none}
  .hero .sealbox:hover,.hero .sealbox:active{transform:none}
  .hero .sealbox::before,.hero>.wrap>div:first-child,.hope-card,.hope-card img{animation:none}
+}
+</style>
+<style>
+/* ===== v5.5: every remaining card animated (2026-11-25): slow float, breathing gold glow, hover lift ===== */
+/* the hope card's gentle language, applied site-wide: transform and box-shadow only, content always visible, no entrance hiding */
+.prog,.lcard,.step,.stat,.val,.faq details,.book,.bookref,.gal figure:not(.hope-card),.docbox,.inc,.node,.who,.gcard{
+ animation:cardFloat 8s ease-in-out infinite alternate,cardGlow 7s ease-in-out infinite alternate;
+ transition:translate .35s ease}
+@keyframes cardFloat{from{transform:translateY(0)}to{transform:translateY(-3px)}}
+@keyframes cardGlow{
+ from{box-shadow:0 20px 44px rgba(82,12,11,.16),0 4px 14px rgba(82,12,11,.08),0 0 0 rgba(201,162,39,0)}
+ to{box-shadow:0 20px 44px rgba(82,12,11,.16),0 4px 14px rgba(82,12,11,.08),0 0 24px rgba(201,162,39,.30)}}
+/* program pages keep their own calmer base shadow under the same breathing glow */
+.pbody .inc,.pbody .node,.pbody .docbox,.pbody .val,.pbody .lcard,.pbody .bookref{animation-name:cardFloat,cardGlowSoft}
+@keyframes cardGlowSoft{
+ from{box-shadow:0 8px 22px rgba(82,12,11,.06),0 0 0 rgba(201,162,39,0)}
+ to{box-shadow:0 8px 22px rgba(82,12,11,.06),0 0 22px rgba(201,162,39,.28)}}
+.pbody .who{animation-name:cardFloat,cardGlowNone}
+@keyframes cardGlowNone{
+ from{box-shadow:0 0 0 rgba(201,162,39,0)}
+ to{box-shadow:0 0 22px rgba(201,162,39,.28)}}
+/* staggered float: small negative delays so the cards never move in sync */
+.prog:nth-child(2),.lcard:nth-child(2),.step:nth-child(2),.stat:nth-child(2),.val:nth-child(2),.faq details:nth-child(2),.book:nth-child(2),.gal figure:not(.hope-card):nth-child(2),.inc:nth-child(2),.node:nth-child(2),.docbox:nth-child(2),.gcard:nth-child(2),.bookref:nth-child(2),.who:nth-child(2){animation-delay:-.8s,-.8s}
+.prog:nth-child(3),.lcard:nth-child(3),.step:nth-child(3),.stat:nth-child(3),.val:nth-child(3),.faq details:nth-child(3),.book:nth-child(3),.gal figure:not(.hope-card):nth-child(3),.inc:nth-child(3),.node:nth-child(3),.docbox:nth-child(3),.gcard:nth-child(3),.bookref:nth-child(3),.who:nth-child(3){animation-delay:-1.6s,-1.6s}
+.prog:nth-child(4),.lcard:nth-child(4),.step:nth-child(4),.stat:nth-child(4),.val:nth-child(4),.faq details:nth-child(4),.book:nth-child(4),.gal figure:not(.hope-card):nth-child(4),.inc:nth-child(4),.node:nth-child(4),.docbox:nth-child(4),.gcard:nth-child(4),.bookref:nth-child(4),.who:nth-child(4){animation-delay:-2.4s,-2.4s}
+.prog:nth-child(5),.lcard:nth-child(5),.step:nth-child(5),.stat:nth-child(5),.val:nth-child(5),.faq details:nth-child(5),.book:nth-child(5),.gal figure:not(.hope-card):nth-child(5),.inc:nth-child(5),.node:nth-child(5),.docbox:nth-child(5),.gcard:nth-child(5),.bookref:nth-child(5),.who:nth-child(5){animation-delay:-3.2s,-3.2s}
+.prog:nth-child(6),.lcard:nth-child(6),.step:nth-child(6),.stat:nth-child(6),.val:nth-child(6),.faq details:nth-child(6),.book:nth-child(6),.gal figure:not(.hope-card):nth-child(6),.inc:nth-child(6),.node:nth-child(6),.docbox:nth-child(6),.gcard:nth-child(6),.bookref:nth-child(6),.who:nth-child(6){animation-delay:-4s,-4s}
+.prog:nth-child(7),.lcard:nth-child(7),.step:nth-child(7),.stat:nth-child(7),.val:nth-child(7),.faq details:nth-child(7),.book:nth-child(7),.gal figure:not(.hope-card):nth-child(7),.inc:nth-child(7),.node:nth-child(7),.docbox:nth-child(7),.gcard:nth-child(7),.bookref:nth-child(7),.who:nth-child(7){animation-delay:-4.8s,-4.8s}
+/* hover: lift a little more, deeper soft shadow, faint gold edge glow */
+.prog:hover,.lcard:hover,.step:hover,.stat:hover,.val:hover,.faq details:hover,.book:hover,.bookref:hover,.gal figure:not(.hope-card):hover,.docbox:hover,.inc:hover,.node:hover,.who:hover,.gcard:hover{
+ translate:0 -4px;animation-name:cardFloat,cardGlowHover}
+@keyframes cardGlowHover{
+ from{box-shadow:0 24px 48px rgba(82,12,11,.20),0 8px 18px rgba(82,12,11,.12),0 0 0 1px rgba(201,162,39,.28),0 0 20px rgba(201,162,39,.30)}
+ to{box-shadow:0 28px 54px rgba(82,12,11,.22),0 10px 20px rgba(82,12,11,.13),0 0 0 1px rgba(201,162,39,.45),0 0 30px rgba(201,162,39,.45)}}
+@media (prefers-reduced-motion:reduce){
+ .prog,.lcard,.step,.stat,.val,.faq details,.book,.bookref,.gal figure:not(.hope-card),.docbox,.inc,.node,.who,.gcard{animation:none;transition:none}
+ .pbody .inc,.pbody .node,.pbody .docbox,.pbody .val,.pbody .lcard,.pbody .bookref{box-shadow:0 8px 22px rgba(82,12,11,.06)}
+ .pbody .who{box-shadow:none}
+ .prog:hover,.lcard:hover,.step:hover,.stat:hover,.val:hover,.faq details:hover,.book:hover,.bookref:hover,.gal figure:not(.hope-card):hover,.docbox:hover,.inc:hover,.node:hover,.who:hover,.gcard:hover{translate:none}
 }
 </style>
 </head>
@@ -1561,6 +1603,18 @@ route();
  setTimeout(hideLoader,2600);
  /* counters: final values are already in the HTML at first paint; the count-up runs only after first render, and never under reduced motion */
  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ /* hero medal: pointer-driven 3D tilt toward the pointer (vanilla-tilt style); fully off under reduced motion */
+ if(!reduce){
+  var seal=document.querySelector('.hero .sealbox');
+  if(seal){
+   seal.addEventListener('pointermove',function(e){
+    var r=seal.getBoundingClientRect();
+    var px=(e.clientX-r.left)/r.width-.5, py=(e.clientY-r.top)/r.height-.5;
+    seal.style.transform='perspective(900px) rotateX('+(-py*16).toFixed(2)+'deg) rotateY('+(px*16).toFixed(2)+'deg) translateY(-3px) scale(1.03)';
+   });
+   seal.addEventListener('pointerleave',function(){seal.style.transform='';});
+  }
+ }
  var t0=performance.now();
  document.querySelectorAll('[data-count]').forEach(function(el){
   var target=parseInt(el.getAttribute('data-count'),10),suf=el.getAttribute('data-suffix')||'';
